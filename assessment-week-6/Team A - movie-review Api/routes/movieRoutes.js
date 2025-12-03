@@ -4,12 +4,14 @@ const router = express.Router();
 /* importing controller functions */
 
 const {
-    getMovies,
-    getMoviesById,
+    getAllMovies,
+    getMovieById,
+    getTopRatedMovies,
+    getMovieStats,
     createMovie,
     updateMovie,
     partialUpdateMovie,
-    deleteMovie 
+    deleteMovie
 } = require ('../controllers/movieController.js');
 
 /* Validation middleware */
@@ -20,10 +22,12 @@ const {
 
 /* Movie Routes */
 
-router.get('/', getMovies);
-router.get('/:id', getMoviesById);
-router.post('/', createMovie);
+router.get('/', getAllMovies);
+router.get('/top-rated', getTopRatedMovies);
+router.get('/stats/:id', getMovieStats);
+router.get('/:id', getMovieById);
 router.put('/:id', updateMovie);
+router.post('/', createMovie);
 router.patch('/:id', partialUpdateMovie);
 router.delete('/:id', deleteMovie);
 
